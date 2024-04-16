@@ -78,7 +78,7 @@ def block_to_code(block):
     text = block[4:-3]
     children = text_to_children(text)
     code = ParentNode("code", children)
-    return ParentNode("pre", code)
+    return ParentNode("pre", [code])
 
 def markdown_to_html_node(markdown):
     blocks = markdown_to_blocks(markdown)

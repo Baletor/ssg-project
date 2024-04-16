@@ -45,7 +45,11 @@ class ParentNode(HTMLNode):
             raise ValueError("Invalid HTML: no children")
         children_html = ""
         for child in self.children:
-            children_html += child.to_html()
+            try:
+                children_html += child.to_html()
+            except TypeError as e:
+                print(f"--\n{child}\n--")
+                raise e
         return f"<{self.tag}{self.props_to_html()}>{children_html}</{self.tag}>"
     
     def __repr__(self):
